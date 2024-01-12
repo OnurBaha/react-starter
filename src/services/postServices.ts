@@ -1,9 +1,14 @@
 import axios, { AxiosResponse } from "axios";
 import { Post } from "../models/post";
+import axiosInstance from "../utils/axiosInterceptors";
 
 class PostService {
     getAll(): Promise<AxiosResponse<Post[], any>>{
-        return axios.get<Post[]>("https://jsonplaceholder.typicode.com/posts");
+        return axiosInstance.get<Post[]>("posts");
+	}
+
+	getById(id: number): Promise<AxiosResponse<Post, any>> {
+		return axiosInstance.get<Post>("posts/" + id);
     }
 }
 
