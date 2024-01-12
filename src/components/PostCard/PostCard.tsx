@@ -2,6 +2,7 @@ import React from "react";
 import {Card, Button} from "semantic-ui-react";
 // Built-in
 function PostCard(props:any) {
+	console.log(props);
 	return (
 		<Card>
 			<Card.Content>
