@@ -4,13 +4,16 @@ const axiosInstance = axios.create({
 	baseURL: "https://jsonplaceholder.typicode.com/",
 });
 
-axiosInstance.interceptors.request.use(config => {
-	// .. istek atılmadan hemen öncesi
-	console.log("İstek atılıyor..");
+axiosInstance.interceptors.request.use(
+	config => {
+		// .. istek atılmadan hemen öncesi
+		console.log("İstek atılıyor..");
 
-	config.headers.Authorization = "MyToken";
-	return config;
-});
+        config.headers.Authorization = "MyToken";
+		return config;
+	},
+	error => {},
+);
 
 axiosInstance.interceptors.response.use(
 	response => {
@@ -19,7 +22,7 @@ axiosInstance.interceptors.response.use(
 		return response;
 	},
 	error => {
-		console.log("hata geldi", error);
+		alert("Hata");
 	},
 );
 

@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { Post } from "../models/post";
 import axiosInstance from "../utils/axiosInterceptors";
 
+
 class PostService {
     getAll(): Promise<AxiosResponse<Post[], any>>{
         return axiosInstance.get<Post[]>("posts");

@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound/NotFound';
 import Navbar from './components/Navbar/Navbar';
 import Login from './pages/Login/Login';
 import { Post } from './models/post';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 function App() {
   // Backend bağlantısı - http isteği
   // bağlantı sonucu gelen değeri ekranda göstermek
@@ -46,7 +47,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/posts" element={<Posts />} />
+        <Route
+					path="/posts"
+					element={
+						<ProtectedRoute>
+							<Posts />
+						</ProtectedRoute>
+					}
+				/>
         <Route path="*" element={<NotFound />} />
         <Route path="/login" element={<Login />} />
       </Routes>
